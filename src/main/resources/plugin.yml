@@ -1,0 +1,4 @@
+name: minevil
+version: ${project.version}
+main: me.namutree0345.minevillage_plugin.Minevillage_plugin
+api-version: 1.16
