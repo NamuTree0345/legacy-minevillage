@@ -1,8 +1,12 @@
 package me.namutree0345.minevillage_plugin;
 
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.server.ServerListPingEvent;
 
@@ -12,6 +16,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 
 public class Extensions implements Listener {
+
+    Location region1;
+    Location region2;
+
     @EventHandler
     public void onServerlistPing(ServerListPingEvent event) {
 
@@ -30,5 +38,21 @@ public class Extensions implements Listener {
             return;
         }
         event.getPlayer().sendMessage(ChatColor.GREEN + "최근 공지: " + ChatColor.RESET + recentNotice);
+    }
+
+    @EventHandler
+    public void anvilPihagiRegionSelect1(BlockBreakEvent event) {
+        if(event.getPlayer().getInventory().getItemInMainHand() == null)
+            return;
+        if(event.getPlayer().getInventory().getItemInMainHand().getType() == Material.GOLDEN_AXE)
+            region1 = event.getBlock().getLocation();
+    }
+
+    @EventHandler
+    public void anvilPihagiRegionSelect2(BlockPlaceEvent event) {
+        if(event.getPlayer().getInventory().getItemInMainHand() == null)
+            return;
+        if(event.getPlayer().getInventory().getItemInMainHand().getType() == Material.GOLDEN_AXE)
+            region2 = event.getBlock().getLocation();
     }
 }

@@ -140,6 +140,8 @@ public class EmeraldCollector implements Listener {
         inventory.setItem(24, getItemStack(Material.GRAY_STAINED_GLASS_PANE, ChatColor.RED + "  "));
         inventory.setItem(25, getItemStack(Material.GRAY_STAINED_GLASS_PANE, ChatColor.RED + "  "));
         inventory.setItem(26, getItemStack(Material.GRAY_STAINED_GLASS_PANE, ChatColor.RED + "  "));
+        if(p.isOp())
+            inventory.setItem(15, getItemStack(Material.ANVIL, ChatColor.GREEN + "모루피하기 시작"));
         p.openInventory(inventory);
     }
 
