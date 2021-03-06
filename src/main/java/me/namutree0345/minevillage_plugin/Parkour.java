@@ -16,10 +16,6 @@ public class Parkour implements Listener {
 
     public HashMap<UUID, Location> recentCheckpoint = new HashMap<>();
 
-    private boolean checkSameLocationWithBlock(Location a, Location b) {
-        return a.getBlockX() == b.getBlockX() && a.getBlockY() == b.getBlockY() && a.getBlockZ() == b.getBlockZ();
-    }
-
     @EventHandler
     public void move(PlayerMoveEvent event) {
         /*
