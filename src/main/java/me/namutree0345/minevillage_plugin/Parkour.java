@@ -35,10 +35,10 @@ public class Parkour implements Listener {
         }
         if(loc2.getType() == Material.GOLD_BLOCK) {
             if(!recentCheckpoint.containsKey(event.getPlayer().getUniqueId())) {
-                recentCheckpoint.put(event.getPlayer().getUniqueId(), loc);
+                recentCheckpoint.put(event.getPlayer().getUniqueId(), loc.toBlockLocation());
                 event.getPlayer().sendTitle(ChatColor.GREEN + "시작!", "", 10, 70, 10);
             } else {
-                if(!checkSameLocationWithBlock(recentCheckpoint.get(event.getPlayer().getUniqueId()), loc)) {
+                if(recentCheckpoint.get(event.getPlayer().getUniqueId()).toBlockLocation() != loc.toBlockLocation()) {
                     recentCheckpoint.replace(event.getPlayer().getUniqueId(), loc.toBlockLocation());
                     event.getPlayer().sendTitle(ChatColor.GOLD + "체크포인트 달성!", "", 10, 70, 10);
                     event.getPlayer().sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + event.getPlayer().getName() + ChatColor.RESET + "" + ChatColor.GOLD + "님이 어떤 체크포인트를 찍었습니다!");
