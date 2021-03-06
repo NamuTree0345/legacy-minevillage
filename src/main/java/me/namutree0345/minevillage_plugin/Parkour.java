@@ -32,6 +32,7 @@ public class Parkour implements Listener {
         if(loc2.getType() == Material.GOLD_BLOCK) {
             if(!recentCheckpoint.containsKey(event.getPlayer().getUniqueId())) {
                 recentCheckpoint.put(event.getPlayer().getUniqueId(), event.getTo());
+                event.getPlayer().sendTitle(ChatColor.GREEN + "시작!", "", 10, 70, 10);
             } else {
                 if(recentCheckpoint.get(event.getPlayer().getUniqueId()) != event.getTo()) {
                     recentCheckpoint.replace(event.getPlayer().getUniqueId(), event.getTo());
