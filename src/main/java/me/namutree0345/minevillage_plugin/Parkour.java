@@ -16,8 +16,8 @@ public class Parkour implements Listener {
 
     public HashMap<UUID, Location> recentCheckpoint = new HashMap<>();
 
-    private void printLoc(Location loc) {
-        System.out.printf("(%f, %f, %f), (%d, %d, %d)\n", loc.getX(), loc.getY(), loc.getZ(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ());
+    private boolean checkSameLocationWithBlock(Location a, Location b) {
+        return a.getBlockX() == b.getBlockX() && a.getBlockY() == b.getBlockY() && a.getBlockZ() == b.getBlockZ();
     }
 
     @EventHandler
@@ -35,14 +35,10 @@ public class Parkour implements Listener {
         }
         if(loc2.getType() == Material.GOLD_BLOCK) {
             if(!recentCheckpoint.containsKey(event.getPlayer().getUniqueId())) {
-                recentCheckpoint.put(event.getPlayer().getUniqueId(), loc.toBlockLocation());
+                recentCheckpoint.put(event.getPlayer().getUniqueId(), loc);
                 event.getPlayer().sendTitle(ChatColor.GREEN + "시작!", "", 10, 70, 10);
             } else {
-                System.out.print("A: ");
-                printLoc(loc.toBlockLocation());
-                System.out.print("B: ");
-                printLoc(recentCheckpoint.get(event.getPlayer().getUniqueId()));
-                if(recentCheckpoint.get(event.getPlayer().getUniqueId()) != loc.toBlockLocation()) {
+                if(!checkSameLocationWithBlock(recentCheckpoint.get(event.getPlayer().getUniqueId()), loc)) {
                     recentCheckpoint.replace(event.getPlayer().getUniqueId(), loc.toBlockLocation());
                     event.getPlayer().sendTitle(ChatColor.GOLD + "체크포인트 달성!", "", 10, 70, 10);
                     event.getPlayer().sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + event.getPlayer().getName() + ChatColor.RESET + "" + ChatColor.GOLD + "님이 어떤 체크포인트를 찍었습니다!");
