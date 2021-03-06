@@ -34,14 +34,14 @@ public class Parkour implements Listener {
             }
         }
         if(loc2.getType() == Material.GOLD_BLOCK) {
-            System.out.print("A: ");
-            printLoc(loc.toBlockLocation());
-            System.out.print("B: ");
-            printLoc(recentCheckpoint.get(event.getPlayer().getUniqueId()));
             if(!recentCheckpoint.containsKey(event.getPlayer().getUniqueId())) {
                 recentCheckpoint.put(event.getPlayer().getUniqueId(), loc.toBlockLocation());
                 event.getPlayer().sendTitle(ChatColor.GREEN + "시작!", "", 10, 70, 10);
             } else {
+                System.out.print("A: ");
+                printLoc(loc.toBlockLocation());
+                System.out.print("B: ");
+                printLoc(recentCheckpoint.get(event.getPlayer().getUniqueId()));
                 if(recentCheckpoint.get(event.getPlayer().getUniqueId()) != loc.toBlockLocation()) {
                     recentCheckpoint.replace(event.getPlayer().getUniqueId(), loc.toBlockLocation());
                     event.getPlayer().sendTitle(ChatColor.GOLD + "체크포인트 달성!", "", 10, 70, 10);
