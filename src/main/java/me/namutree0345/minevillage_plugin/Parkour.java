@@ -27,9 +27,12 @@ public class Parkour implements Listener {
             }
         }
         if(loc2.getType() == Material.GOLD_BLOCK) {
-            event.getPlayer().sendTitle(ChatColor.GOLD + "체크포인트 달성!", "", 10, 70, 10);
-            event.getPlayer().sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + event.getPlayer().getName() + ChatColor.RESET + "" + ChatColor.GOLD + "님이 어떤 체크포인트를 찍었습니다!");
-            event.getPlayer().getWorld().spawnParticle(Particle.FIREWORKS_SPARK, loc.getX(), loc.getY(), loc.getZ(), 100, 3, 3, 3);
+            if(!recentCheckpoint.containsKey(event.getPlayer().getUniqueId())) {
+                recentCheckpoint.put(event.getPlayer().getUniqueId(), event.getTo());
+                event.getPlayer().sendTitle(ChatColor.GOLD + "체크포인트 달성!", "", 10, 70, 10);
+                event.getPlayer().sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + event.getPlayer().getName() + ChatColor.RESET + "" + ChatColor.GOLD + "님이 어떤 체크포인트를 찍었습니다!");
+                event.getPlayer().getWorld().spawnParticle(Particle.FIREWORKS_SPARK, loc.getX(), loc.getY(), loc.getZ(), 100, 3, 3, 3);
+            }
         }
     }
 
