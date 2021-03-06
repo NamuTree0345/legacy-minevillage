@@ -18,6 +18,7 @@ public final class Minevillage_plugin extends JavaPlugin {
         }
         getServer().getPluginManager().registerEvents(new EmeraldCollector(), this);
         getServer().getPluginManager().registerEvents(new Extensions(), this);
+        getServer().getPluginManager().registerEvents(new Parkour(), this);
         PluginCommand npces = getCommand("npces");
         npces.setExecutor(new NpcesCommand());
         npces.setTabCompleter(new NpcesCommandTabCompleter());
