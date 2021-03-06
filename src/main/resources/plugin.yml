@@ -2,3 +2,6 @@ name: minevil
 version: 1.0
 main: me.namutree0345.minevillage_plugin.Minevillage_plugin
 api-version: 1.16
+command:
+  npces:
+    description: "test"
