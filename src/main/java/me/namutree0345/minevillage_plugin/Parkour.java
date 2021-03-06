@@ -1,9 +1,6 @@
 package me.namutree0345.minevillage_plugin;
 
-import org.bukkit.ChatColor;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
+import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -17,7 +14,7 @@ public class Parkour implements Listener {
     public HashMap<UUID, Location> recentCheckpoint = new HashMap<>();
 
     private void printLoc(Location location) {
-        System.out.printf("(%f, %f, %f), (%d, %d, %d)", location.getX(), location.getY(), location.getZ(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
+        Bukkit.getLogger().info(String.format("(%f, %f, %f), (%d, %d, %d)", location.getX(), location.getY(), location.getZ(), location.getBlockX(), location.getBlockY(), location.getBlockZ()));
     }
 
     @EventHandler
