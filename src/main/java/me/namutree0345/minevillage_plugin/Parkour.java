@@ -41,6 +41,7 @@ public class Parkour implements Listener {
             } else {
                 printLoc(loc.toBlockLocation());
                 printLoc(recentCheckpoint.get(event.getPlayer().getUniqueId()).toBlockLocation());
+                Bukkit.getLogger().info(String.valueOf(!checkSamePos(recentCheckpoint.get(event.getPlayer().getUniqueId()).toBlockLocation(), loc.toBlockLocation())));
                 if(!checkSamePos(recentCheckpoint.get(event.getPlayer().getUniqueId()).toBlockLocation(), loc.toBlockLocation())) {
                     recentCheckpoint.replace(event.getPlayer().getUniqueId(), loc);
                     event.getPlayer().sendTitle(ChatColor.GOLD + "체크포인트 달성!", "", 10, 70, 10);
