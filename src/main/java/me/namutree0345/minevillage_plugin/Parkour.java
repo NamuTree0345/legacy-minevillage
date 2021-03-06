@@ -16,6 +16,10 @@ public class Parkour implements Listener {
 
     public HashMap<UUID, Location> recentCheckpoint = new HashMap<>();
 
+    private void printLoc(Location location) {
+        System.out.printf("(%f, %f, %f), (%d, %d, %d)", location.getX(), location.getY(), location.getZ(), location.getBlockX(), location.getBlockY(), location.getBlockZ());
+    }
+
     @EventHandler
     public void move(PlayerMoveEvent event) {
         /*
