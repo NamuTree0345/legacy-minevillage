@@ -17,6 +17,10 @@ public class Parkour implements Listener {
         Bukkit.getLogger().info(String.format("(%f, %f, %f), (%d, %d, %d)", location.getX(), location.getY(), location.getZ(), location.getBlockX(), location.getBlockY(), location.getBlockZ()));
     }
 
+    private boolean checkSamePos(Location a, Location b) {
+        return a.getBlockX() == b.getBlockX() && a.getBlockY() == b.getBlockY() && a.getBlockZ() == b.getBlockZ();
+    }
+
     @EventHandler
     public void move(PlayerMoveEvent event) {
         /*
@@ -37,7 +41,7 @@ public class Parkour implements Listener {
             } else {
                 printLoc(loc.toBlockLocation());
                 printLoc(recentCheckpoint.get(event.getPlayer().getUniqueId()).toBlockLocation());
-                if(recentCheckpoint.get(event.getPlayer().getUniqueId()).toBlockLocation() != loc.toBlockLocation()) {
+                if(!checkSamePos(recentCheckpoint.get(event.getPlayer().getUniqueId()).toBlockLocation(), loc.toBlockLocation())) {
                     recentCheckpoint.replace(event.getPlayer().getUniqueId(), loc);
                     event.getPlayer().sendTitle(ChatColor.GOLD + "체크포인트 달성!", "", 10, 70, 10);
                     event.getPlayer().sendMessage(ChatColor.GOLD + "" + ChatColor.BOLD + event.getPlayer().getName() + ChatColor.RESET + "" + ChatColor.GOLD + "님이 어떤 체크포인트를 찍었습니다!");
