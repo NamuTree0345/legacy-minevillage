@@ -29,13 +29,13 @@ public class Parkour implements Listener {
         Location loc = event.getTo();
         loc.setY(loc.getY() - 1);
          */
-        if(event.getTo().getBlockX() == 281 && event.getTo().getBlockY() == 70 && event.getTo().getBlockZ() == -551) {
+        Location loc = event.getTo();
+        Block loc2 = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
+        if(loc2.getType() == Material.REDSTONE_BLOCK) {
             Entity entity = event.getPlayer().getWorld().spawnEntity(new Location(event.getPlayer().getWorld(), 388, 69, -564), EntityType.COW);
             Bukkit.getScheduler().scheduleSyncDelayedTask(Minevillage_plugin.getPlugin(Minevillage_plugin.class), entity::remove, 30);
             event.getPlayer().teleport(event.getFrom());
         }
-        Location loc = event.getTo();
-        Block loc2 = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
         if(recentCheckpoint.containsKey(event.getPlayer().getUniqueId())) {
             if(loc2.getType() == Material.RED_WOOL) {
                 event.getPlayer().teleport(recentCheckpoint.get(event.getPlayer().getUniqueId()));
