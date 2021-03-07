@@ -32,6 +32,7 @@ public class Parkour implements Listener {
         if(event.getTo().getBlockX() == 281 && event.getTo().getBlockY() == 70 && event.getTo().getBlockZ() == -551) {
             Entity entity = event.getPlayer().getWorld().spawnEntity(new Location(event.getPlayer().getWorld(), 388, 69, -564), EntityType.COW);
             Bukkit.getScheduler().scheduleSyncDelayedTask(Minevillage_plugin.getPlugin(Minevillage_plugin.class), entity::remove, 30);
+            event.getPlayer().teleport(event.getFrom());
         }
         Location loc = event.getTo();
         Block loc2 = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
