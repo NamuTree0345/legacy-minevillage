@@ -25,7 +25,7 @@ public class Extensions implements Listener {
 
         // Mod - ServerListPing
         LocalDate currentDate = LocalDate.now();
-        event.setMaxPlayers(Integer.parseInt(currentDate.format(DateTimeFormatter.ofPattern("YYYYMMDD"))));
+        event.setMaxPlayers(Integer.parseInt(currentDate.format(DateTimeFormatter.ofPattern("yyyyMMdd"))));
         event.setMotd(ChatColor.GREEN + "                        MineVillage\n" + ChatColor.GOLD + "                  마인마을" + ChatColor.WHITE + "로 어서오세요!");
     }
 
