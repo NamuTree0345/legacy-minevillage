@@ -2,6 +2,8 @@ package me.namutree0345.minevillage_plugin;
 
 import org.bukkit.*;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -27,6 +29,10 @@ public class Parkour implements Listener {
         Location loc = event.getTo();
         loc.setY(loc.getY() - 1);
          */
+        if(event.getTo().getBlockX() == 281 && event.getTo().getBlockY() == 70 && event.getTo().getBlockZ() == -551) {
+            Entity entity = event.getPlayer().getWorld().spawnEntity(new Location(event.getPlayer().getWorld(), 388, 69, -564), EntityType.COW);
+            Bukkit.getScheduler().scheduleSyncDelayedTask(Minevillage_plugin.getPlugin(Minevillage_plugin.class), entity::remove, 30);
+        }
         Location loc = event.getTo();
         Block loc2 = event.getPlayer().getWorld().getBlockAt(event.getPlayer().getLocation().getBlockX(), event.getPlayer().getLocation().getBlockY() - 1, event.getPlayer().getLocation().getBlockZ());
         if(recentCheckpoint.containsKey(event.getPlayer().getUniqueId())) {
